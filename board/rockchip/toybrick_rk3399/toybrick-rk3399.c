@@ -15,13 +15,11 @@
 #include <asm/arch-rockchip/hardware.h>
 #include <asm/arch-rockchip/misc.h>
 
-#define GRF_IO_VSEL_BT565_SHIFT 0
-#define GRF_IO_VSEL_ADDR  0xff77e640
-
+#define GRF_BASE        0xff770000
 int board_early_init_f(void)
 {
-	/* BT565 is in 1.8v domain */
-	rk_setreg(GRF_IO_VSEL_ADDR, 1 << GRF_IO_VSEL_BT565_SHIFT);
+	struct rk3399_grf_regs *grf = (void *)GRF_BASE;
 
+	rk_setreg(&grf->io_vsel, BIT(0));
 	return 0;
 }

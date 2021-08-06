@@ -14,5 +14,7 @@
 #include <configs/rk3399_common.h>
 
 #define SDRAM_BANK_SIZE			(2UL << 30)
+#define GPIO_HUB_RESET         149
+#define GPIO_HOST_EN           66
 
 #endif

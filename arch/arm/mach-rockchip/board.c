@@ -36,17 +36,17 @@ int board_late_init(void)
 	return rk_board_late_init();
 }
 
-#define GPIO_HUB_RESET 149
-#define GPIO_HOST_EN 66
-
 int board_init(void)
 {
 	int ret;
+
 #ifdef CONFIG_DM_REGULATOR
 	ret = regulators_enable_boot_on(false);
 	if (ret)
 		debug("%s: Cannot enable boot on regulator\n", __func__);
 #endif
+
+if (IS_ENABLED(CONFIG_TARGET_TOYBRICK_RK3399)) {
 	ret = gpio_request(GPIO_HOST_EN, "gpio_host_enable");
 	if (ret < 0) {
 		printf("request for gpio_host_enable failed:%d\n", ret);
@@ -61,6 +61,7 @@ int board_init(void)
 	gpio_set_value(GPIO_HUB_RESET, 0);
 	mdelay(30);
 	gpio_direction_output(GPIO_HUB_RESET, 1);
+	}
 	return 0;
 }
 

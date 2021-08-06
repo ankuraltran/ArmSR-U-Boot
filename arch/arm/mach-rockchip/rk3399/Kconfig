@@ -24,7 +24,7 @@ config TARGET_EVB_RK3399
 config TARGET_TOYBRICK_RK3399
 	bool "RK3399 TOYBRICK board"
 	help
-	  RK3399evb is a evaluation board for Rockchip RK3399,
+	  RK3399toybrick is a toybrick board for Rockchip RK3399
 	  with full function and physical connectors support like Type-C ports,
 	  USB.0 host ports, LVDS, JTAG, MAC, SD card, HDMI, USB-to-serial...
 
